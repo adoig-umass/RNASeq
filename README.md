@@ -23,3 +23,14 @@ wget -L ftp://ftp.ensembl.org/pub/release-${latest_release}/gtf/homo_sapiens/Hom
 
 We should specify these same genome files to ATACSeq.
 
+I will define the settings for the nextflow run through a parameter yaml/json file, using the launch tool provided through
+the nextflow core website.
+
+After peforming the above pull commands the output has generated an updated .gtf file, version 112. Therefore, the atacseq analysis should be used
+again. We will perform the indexing on the RNASeq pipeline and then use these to crossreference the two runs.
+
+
+
+
+
+

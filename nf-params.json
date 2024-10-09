@@ -1,0 +1,10 @@
+{
+    "input": "\/home\/adoig\/Documents\/GitHub\/RNASeq\/hb_rnaseq_nf_sample_sheet.csv",
+    "outdir": "\/home\/adoig\/hb_nf_RNASeq\/output",
+    "email": "adoig@umass.edu",
+    "multiqc_title": "HB RNASeq Data Processed Using Nextflow",
+    "fasta": "\/home\/adoig\/referenceGenomes\/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz",
+    "gtf": "\/home\/adoig\/referenceGenomes\/Homo_sapiens.GRCh38.112.gtf.gz",
+    "pseudo_aligner": "salmon",
+    "save_reference": true
+}

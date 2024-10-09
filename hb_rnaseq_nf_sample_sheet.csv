@@ -1,0 +1,7 @@
+sample, fastq_1, fastq_2,strandedness
+WT_REP1,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/WT1_1.fq.gz,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/WT1_2.fq.gz,auto
+WT_REP2,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/WT2_1.fq.gz,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/WT2_2.fq.gz,auto
+WT_REP3,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/WT3_1.fq.gz,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/WT3_2.fq.gz,auto
+KO_REP1,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/KO4_1.fq.gz,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/KO4_2.fq.gz,auto
+KO_REP2,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/KO5_1.fq.gz,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/KO5_2.fq.gz,auto
+KO_REP3,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/KO6_1.fq.gz,/home/adoig/hb_RNA_Seq_Data/1085_RNA_Seq_Results/rawdata/KO6_2.fq.gz,auto

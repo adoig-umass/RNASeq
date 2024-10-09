@@ -1,0 +1,7 @@
+Oct-08 14:38:34.517 [main] DEBUG nextflow.cli.Launcher - $> nextflow run nf-core/rnaseq -r 3.14.0 -name hb_rnaseq_nf_sample_sheet -profile docker -params-file nf-params.json
+Oct-08 14:38:34.566 [main] DEBUG nextflow.cli.Launcher - Operation aborted
+nextflow.exception.AbortOperationException: Run name `hb_rnaseq_nf_sample_sheet` has been already used -- Specify a different one
+	at nextflow.cli.CmdRun.checkRunName(CmdRun.groovy:504)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:315)
+	at nextflow.cli.Launcher.run(Launcher.groovy:503)
+	at nextflow.cli.Launcher.main(Launcher.groovy:657)
