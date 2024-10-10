@@ -1,0 +1,1 @@
+sudo nextflow run nf-core/differentialabundance -r 1.5.0 -profile conda -params-file /home/adoig/Documents/GitHub/RNASeq/differential_abundance/rna_seq_param.json

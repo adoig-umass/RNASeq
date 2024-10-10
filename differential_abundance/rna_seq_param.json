@@ -1,0 +1,11 @@
+{
+    "study_name": "diff_abundance_rnaseq_hb",
+    "input": "\/home\/adoig\/Documents\/GitHub\/RNASeq\/differential_abundance\/diff_abund_hb_rnaseq_nf_sample_sheet.csv",
+    "contrasts": "\/home\/adoig\/Documents\/GitHub\/RNASeq\/differential_abundance\/hb_rna_seq_contrasts_file.csv",
+    "outdir": "\/home\/adoig\/hb_nf_RNASeq\/Diff_Abundance",
+    "matrix": "\/home\/adoig\/hb_nf_RNASeq\/output\/star_salmon\/salmon.merged.gene_counts.tsv",
+    "transcript_length_matrix": "\/home\/adoig\/hb_nf_RNASeq\/output\/star_salmon\/salmon.merged.gene_lengths.tsv",
+    "deseq2_cores": 10,
+    "email": "adoig@umass.edu",
+    "gtf": "\/home\/adoig\/referenceGenomes\/Homo_sapiens.GRCh38.112.gtf.gz"
+}

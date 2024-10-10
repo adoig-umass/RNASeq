@@ -29,6 +29,15 @@ the nextflow core website.
 After peforming the above pull commands the output has generated an updated .gtf file, version 112. Therefore, the atacseq analysis should be used
 again. We will perform the indexing on the RNASeq pipeline and then use these to crossreference the two runs.
 
+Heather's Data was run through the nf-core RNAseq pipeline to generate the 
+alignments. The next step will be to calculate the expression abundance, 
+by piping this data into the differential abundance pipeline available via
+nextflow.
+
+I will save a copy of the command that was used to run the RNA seq 
+to a script file.
+
+
 
 
 

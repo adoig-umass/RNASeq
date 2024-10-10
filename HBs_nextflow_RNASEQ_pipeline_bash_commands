@@ -1,0 +1,6 @@
+This was the command fed to begin the nextflow RNASeq pipeline on 
+HB's Data.
+
+sudo nextflow run nf-core/rnaseq -r 3.16.0 -name hb_rnaseq_nf7 
+-profile docker 
+-params-file /home/adoig/Documents/GitHub/RNASeq/nf-params.json 
