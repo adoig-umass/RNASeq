@@ -1,0 +1,92 @@
+Oct-10 13:08:09.387 [main] DEBUG nextflow.cli.Launcher - $> nextflow run nf-core/differentialabundance -r 1.5.0 -profile docker -params-file /home/adoig/Documents/GitHub/RNASeq/HB/differential_abundance/SecondHBRNASeqDiffAbun20241010/rna_seq_param.json
+Oct-10 13:08:09.433 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.4
+Oct-10 13:08:09.445 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/root/.nextflow/plugins; core-plugins: nf-amazon@2.5.3,nf-azure@1.6.1,nf-cloudcache@0.4.1,nf-codecommit@0.2.1,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2-patch1,nf-tower@1.9.1,nf-wave@1.4.2-patch1
+Oct-10 13:08:09.450 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Oct-10 13:08:09.451 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Oct-10 13:08:09.453 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Oct-10 13:08:09.460 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Oct-10 13:08:09.467 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /root/.nextflow/scm
+Oct-10 13:08:09.932 [main] DEBUG nextflow.scm.AssetManager - Git config: /root/.nextflow/assets/nf-core/differentialabundance/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/differentialabundance.git
+Oct-10 13:08:09.949 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Oct-10 13:08:09.954 [main] DEBUG nextflow.scm.AssetManager - Git config: /root/.nextflow/assets/nf-core/differentialabundance/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/differentialabundance.git
+Oct-10 13:08:10.545 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /root/.nextflow/assets/nf-core/differentialabundance/nextflow.config
+Oct-10 13:08:10.546 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /root/.nextflow/assets/nf-core/differentialabundance/nextflow.config
+Oct-10 13:08:10.549 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /root/.nextflow/secrets/store.json
+Oct-10 13:08:10.551 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@48581a3b] - activable => nextflow.secret.LocalSecretsProvider@48581a3b
+Oct-10 13:08:10.560 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `docker`
+Oct-10 13:08:11.232 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [bih, cfc_dev, uzl_omics, ifb_core, embl_hd, denbi_qbic, alice, mjolnir_globe, uppmax, maxquant, incliva, ilifu, uge, rosalind_uge, lugh, mccleary, unibe_ibu, vai, soft, test_soft, czbiohub_aws, jax, roslin, ccga_med, tes, scw, unc_longleaf, tigem, tubingen_apg, google, apollo, ipop_up, vsc_calcua, pdc_kth, googlels, stjude, daisybio, eddie, medair, biowulf, test_maxquant, apptainer, bi, bigpurple, adcra, cedars, pawsey_setonix, vsc_kul_uhasselt, pawsey_nimbus, ucl_myriad, utd_ganymede, charliecloud, icr_davros, ceres, munin, arm, rosalind, rnaseq, hasta, cfc, uzh, ebi_codon_slurm, ebc, ccga_dx, crick, ku_sund_danhead, marvin, biohpc_gen, shifter, mana, mamba, york_viking, unc_lccc, wehi, awsbatch, wustl_htcf, arcc, imperial, maestro, software_license, genotoul, nci_gadi, abims, janelia, nu_genomics, googlebatch, oist, sahmri, affy, mpcdf, leicester, vsc_ugent, create, sage, cambridge, jex, podman, ebi_codon, cheaha, xanadu, nyu_hpc, test, marjorie, computerome, ucd_sonic, seg_globe, sanger, dkfz, bluebear, pasteur, einstein, ethz_euler, m3c, test_full, imb, ucl_cscluster, tuos_stanage, azurebatch, hki, crukmi, csiro_petrichor, qmul_apocrita, docker, engaging, gis, hypatia, psmn, eva, nygc, test_nogtf, fgcz, conda, crg, singularity, mpcdf_viper, pe2, self_hosted_runner, tufts, uw_hyak_pedslabs, debug, test_affy, genouest, cbe, phoenix, gitpod, seawulf, uod_hpc, fub_curta, uct_hpc, aws_tower, binac]
+Oct-10 13:08:11.251 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Oct-10 13:08:11.252 [main] DEBUG nextflow.cli.CmdRun - Launching `https://github.com/nf-core/differentialabundance` [compassionate_watson] DSL2 - revision: 3dd360fed0 [1.5.0]
+Oct-10 13:08:11.252 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins declared=[nf-validation@1.1.3]
+Oct-10 13:08:11.253 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Oct-10 13:08:11.253 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[nf-validation@1.1.3]
+Oct-10 13:08:11.253 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-validation version: 1.1.3
+Oct-10 13:08:11.257 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-validation@1.1.3' resolved
+Oct-10 13:08:11.257 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-validation@1.1.3'
+Oct-10 13:08:11.260 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-validation@1.1.3
+Oct-10 13:08:11.290 [main] DEBUG nextflow.Session - Session UUID: 4bcc52d8-bcb6-4f3e-ac74-bf801e827ad7
+Oct-10 13:08:11.290 [main] DEBUG nextflow.Session - Run name: compassionate_watson
+Oct-10 13:08:11.290 [main] DEBUG nextflow.Session - Executor pool size: 24
+Oct-10 13:08:11.294 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Oct-10 13:08:11.304 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.4 build 5917
+  Created: 01-08-2024 07:05 UTC (03:05 EDT)
+  System: Linux 6.8.0-45-generic
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 21.0.4+7-Ubuntu-1ubuntu224.04
+  Encoding: UTF-8 (UTF-8)
+  Process: 2383064@cray [127.0.1.1]
+  CPUs: 24 - Mem: 94.1 GB (1.1 GB) - Swap: 8 GB (6.7 GB) - Virtual threads ON
+Oct-10 13:08:11.311 [main] DEBUG nextflow.Session - Work-dir: /home/adoig/Documents/GitHub/RNASeq/HB/differential_abundance/SecondHBRNASeqDiffAbun20241010/work [ext2/ext3]
+Oct-10 13:08:11.312 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /root/.nextflow/assets/nf-core/differentialabundance/bin
+Oct-10 13:08:11.319 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Oct-10 13:08:11.327 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Oct-10 13:08:11.382 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Oct-10 13:08:11.388 [main] DEBUG nextflow.util.CustomPoolFactory - Creating virtual thread pool
+Oct-10 13:08:11.430 [main] DEBUG nextflow.Session - Session start
+Oct-10 13:08:11.432 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /home/adoig/hb_nf_RNASeq/Diff_Abundance/pipeline_info/execution_trace_2024-10-10_13-08-11.txt
+Oct-10 13:08:11.493 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Oct-10 13:08:11.877 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_2e031fa02c9ff5d2: /root/.nextflow/assets/nf-core/differentialabundance/main.nf
+  Script_66c2d317d61bb7e6: /root/.nextflow/assets/nf-core/differentialabundance/./workflows/differentialabundance.nf
+Oct-10 13:08:11.877 [main] DEBUG nextflow.Session - Session aborted -- Cause: /home/adoig/Documents/GitHub/RNASeq/differential_abundance/diff_abund_hb_rnaseq_nf_sample_sheet.csv
+Oct-10 13:08:11.882 [main] ERROR nextflow.cli.Launcher - /home/adoig/Documents/GitHub/RNASeq/differential_abundance/diff_abund_hb_rnaseq_nf_sample_sheet.csv
+java.nio.file.NoSuchFileException: /home/adoig/Documents/GitHub/RNASeq/differential_abundance/diff_abund_hb_rnaseq_nf_sample_sheet.csv
+	at nextflow.file.FileHelper.checkIfExists(FileHelper.groovy:1099)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.Nextflow.file(Nextflow.groovy:123)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at Script_66c2d317d61bb7e6.runScript(Script_66c2d317d61bb7e6:8)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run0(BaseScript.groovy:159)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:209)
+	at nextflow.script.ScriptParser.runScript(ScriptParser.groovy:236)
+	at nextflow.script.ScriptParser.runScript(ScriptParser.groovy:222)
+	at nextflow.script.IncludeDef.memoizedMethodPriv$loadModule0PathMapSession(IncludeDef.groovy:140)
+	at nextflow.script.IncludeDef.access$0(IncludeDef.groovy)
+	at nextflow.script.IncludeDef$__clinit__closure2.doCall(IncludeDef.groovy)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:279)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at org.codehaus.groovy.runtime.memoize.Memoize$MemoizeFunction.lambda$call$0(Memoize.java:137)
+	at org.codehaus.groovy.runtime.memoize.ConcurrentCommonCache.getAndPut(ConcurrentCommonCache.java:137)
+	at org.codehaus.groovy.runtime.memoize.ConcurrentCommonCache.getAndPut(ConcurrentCommonCache.java:113)
+	at org.codehaus.groovy.runtime.memoize.Memoize$MemoizeFunction.call(Memoize.java:136)
+	at nextflow.script.IncludeDef.loadModule0(IncludeDef.groovy)
+	at nextflow.script.IncludeDef.load0(IncludeDef.groovy:112)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at Script_2e031fa02c9ff5d2.runScript(Script_2e031fa02c9ff5d2:20)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run0(BaseScript.groovy:159)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:209)
+	at nextflow.script.ScriptParser.runScript(ScriptParser.groovy:236)
+	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:243)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:138)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:372)
+	at nextflow.cli.Launcher.run(Launcher.groovy:503)
+	at nextflow.cli.Launcher.main(Launcher.groovy:657)

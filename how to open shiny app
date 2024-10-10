@@ -1,0 +1,32 @@
+In order to open a shiny server and begin an application to interpret
+the shiny app, you will need to use conda to open an environment
+containing the shiny server tool, and then load in the app you are
+trying to view on the browser. This is done by using the conda tool.
+For example, in order to view the shiny output from the differential 
+abundance tool from nextflow, you should enter
+
+(if you do not already have a conda environment for running the shiny
+ngs tools)
+
+conda config --add channels bioconda
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+conda create -n shinyngs r-shinyngs
+
+
+To open up this particular environment, enter the following
+
+conda activate shinyngs,
+
+Now you can navigate to the directory where the shiny NGS toolset is,
+and using the following commands open up a shiny server hosting the
+page to browse your data.
+
+To do this, from within the (shinyngs) environemnt, you can use the script
+that was generateda along with the differential abundance to launch the
+server. You can do this by entering "app.R".
+
+And then at the end of the command, after the output string that was used
+to boot the software, the computer will be listening on a particular
+http://location. You can enter this into a web browser or control click the
+addresss and it will open up in a browser.
