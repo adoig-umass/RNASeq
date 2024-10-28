@@ -25,7 +25,7 @@ library(RColorBrewer)
 library(ggplot2)
 library(ggrepel)
 
-HEK293_UCHL5_knockout.full.differential <- read_tsv("~/hb_nf_RNASeq/Diff_Abundance/secondrunwithontology20241010/tables/differential/UCHL5_knockout.deseq2.results.tsv")
+HEK293_UCHL5_knockout.full.differential <- read_tsv("~/Documents/GitHub/RNASeq/comparing_U2OS_and_HEK293T /HEK293_UCHL5_knockout.deseq2.results.tsv")
 
 #load data into a frame
 symbolHB <- HEK293_UCHL5_knockout.full.differential
@@ -57,7 +57,7 @@ library(RColorBrewer)
 library(ggplot2)
 library(ggrepel)
 
-U2OS_UCHL5_knockout.full.differential <- read_tsv("/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/tables/differential/UCHL5_knockout.deseq2.results.tsv")
+U2OS_UCHL5_knockout.full.differential <- read_tsv("~/Documents/GitHub/RNASeq/comparing_U2OS_and_HEK293T /U2OS_UCHL5_knockout.deseq2.results.tsv")
 
 #load data into a frame
 symbolU2OS <- U2OS_UCHL5_knockout.full.differential
@@ -156,12 +156,12 @@ vennDiagramHEK293andU2OS
 
 Write the HEK293 data with gene symbols
 ```{r}
-write.csv(symbolHB, "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/Differential_transcripts_with_gene_symbols/symbolHEK293.csv")
+write.csv(symbolHB, "symbolHEK293.csv")
 ```
 
 Write the U2OS data with gene symbols
 ```{r}
-write.csv(symbolU2OS, "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/Differential_transcripts_with_gene_symbols/symbolU2OS.csv")
+write.csv(symbolU2OS, "symbolU2OS.csv")
 ```
 
 ## Upregulated data output
@@ -176,7 +176,7 @@ write.csv(symbolU2OS, "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundanc
 
 SigUpregulatedHEK <- symbolHB %>% filter(diffexpressed == "UP")
 
-write.csv(SigUpregulatedHEK, "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/SigUpregulatedHEK.csv")
+write.csv(SigUpregulatedHEK, "SigUpregulatedHEK.csv")
 
 #Now lets do the same but for the significant upregulated U2OS cells
 
@@ -184,7 +184,7 @@ SigUpregulatedU2OS <- symbolU2OS %>%
   filter(diffexpressed == "UP")
 
 write.csv(SigUpregulatedU2OS,
-          "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/SigUpregulatedU2OS.csv")
+          "SigUpregulatedU2OS.csv")
 ```
 
 ## Downregulated data output
@@ -207,7 +207,7 @@ SigDownregulatedU2OS <- symbolU2OS %>%
   filter(diffexpressed == "DOWN")
 
 write.csv(SigDownregulatedU2OS,
-          "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/SigUpregulatedU2OS.csv")
+          "SigUpregulatedU2OS.csv")
 ```
 
 
@@ -219,7 +219,7 @@ We should be able to make alist of the up and down regulated genes all in one ta
 allsigtranscripts <- inner_join(symbolHB, symbolU2OS, by = "gene_id", suffix = c("HEK","U2OS"))
 
 write.csv(allsigtranscripts,
-          "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/allsigtranscripts.csv")
+          "allsigtranscripts.csv")
 
 ```
 
@@ -262,6 +262,9 @@ ggplot() +
 
 ```{r}
 similiarTranscripts <- filter(allsigtranscripts, diffexpressedHEK == diffexpressedU2OS & diffexpressedHEK != "NO")
+
+write.csv(similiarTranscripts,
+          "similiarTranscripts.csv")
 ```
 
 ```{r}
@@ -379,6 +382,7 @@ deltaChangeinSigSamples <- mutate(similiarTranscripts, abs(log2FoldChangeHEK) - 
 
 colnames(deltaChangeinSigSamples)[16] = "Delta Log2FC"
 
-
+write.csv(similiarTranscripts,
+          "similarTranscriptsDeltaLFC.csv")
 ```
 
