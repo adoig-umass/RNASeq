@@ -57,7 +57,7 @@ library(RColorBrewer)
 library(ggplot2)
 library(ggrepel)
 
-U2OS_UCHL5_knockout.full.differential <- read_tsv("/media/adoig/64gbs/GChr38AtacSeq/U2OS RNASEQ/U2OS Differential Abundance without outlier/tables/differential/UCHL5_knockout.deseq2.results.tsv")
+U2OS_UCHL5_knockout.full.differential <- read_tsv("/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/tables/differential/UCHL5_knockout.deseq2.results.tsv")
 
 #load data into a frame
 symbolU2OS <- U2OS_UCHL5_knockout.full.differential
@@ -151,6 +151,234 @@ vennDiagramHEK293andU2OS <- venn.diagram(
 vennDiagramHEK293andU2OS
 ```
 
+## Output tables of significant overlapping genes
+
+
+Write the HEK293 data with gene symbols
 ```{r}
-print(getwd())
+write.csv(symbolHB, "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/Differential_transcripts_with_gene_symbols/symbolHEK293.csv")
 ```
+
+Write the U2OS data with gene symbols
+```{r}
+write.csv(symbolU2OS, "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/Differential_transcripts_with_gene_symbols/symbolU2OS.csv")
+```
+
+## Upregulated data output
+
+```{r}
+
+#Generate a datatable containing all of the upregulated transcripts similiar and
+#statistically significant across both HEK and U2OS
+
+#first lets generate dataframes containing just the significant upregulated HEK293
+#transcripts
+
+SigUpregulatedHEK <- symbolHB %>% filter(diffexpressed == "UP")
+
+write.csv(SigUpregulatedHEK, "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/SigUpregulatedHEK.csv")
+
+#Now lets do the same but for the significant upregulated U2OS cells
+
+SigUpregulatedU2OS <- symbolU2OS %>%
+  filter(diffexpressed == "UP")
+
+write.csv(SigUpregulatedU2OS,
+          "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/SigUpregulatedU2OS.csv")
+```
+
+## Downregulated data output
+
+```{r}
+
+#Generate a datatable containing all of the upregulated transcripts similiar and
+#statistically significant across both HEK and U2OS
+
+#first lets generate dataframes containing just the significant upregulated HEK293
+#transcripts
+
+SigDownregulatedHEK <- symbolHB %>% filter(diffexpressed == "DOWN")
+
+write.csv(SigDownregulatedHEK, "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/SigUpregulatedHEK.csv")
+
+#Now lets do the same but for the significant upregulated U2OS cells
+
+SigDownregulatedU2OS <- symbolU2OS %>%
+  filter(diffexpressed == "DOWN")
+
+write.csv(SigDownregulatedU2OS,
+          "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/SigUpregulatedU2OS.csv")
+```
+
+
+## Both datasets all sig data, in the same data table
+
+We should be able to make alist of the up and down regulated genes all in one table, and then do a volcano plot on them.
+
+```{r}
+allsigtranscripts <- inner_join(symbolHB, symbolU2OS, by = "gene_id", suffix = c("HEK","U2OS"))
+
+write.csv(allsigtranscripts,
+          "/media/adoig/64gbs/U2OS RNASEQ/U2OS Differential Abundance without outlier/allsigtranscripts.csv")
+
+```
+
+## Both datasets on the volcano plot
+
+```{r}
+library(tidyverse) #includes ggplot2
+library(RColorBrewer) #for a colorful plot
+library(ggrepel) #for nice annotations
+
+ggplot() +
+  geom_point(data = symbolHB, aes(x = log2FoldChange, y = -log10(padj)), color = "red", label = symbol) +
+  geom_point(data = symbolU2OS, aes(x = log2FoldChange, y = -log10(padj)), color = "blue")+
+  
+  geom_vline(xintercept = c(-0.6, 0.6), col = "gray", linetype = 'dashed') +
+  geom_hline(yintercept = -log10(0.05), col = "gray", linetype = 'dashed')
+```
+
+
+```{r}
+library(tidyverse) # includes ggplot2
+library(RColorBrewer) # for a colorful plot
+library(ggrepel) # for nice annotations
+
+ggplot() +
+  geom_point(data = symbolHB, aes(x = log2FoldChange, y = -log10(padj)), color = "red") +
+  geom_point(data = symbolU2OS, aes(x = log2FoldChange, y = -log10(padj)), color = "blue") +
+  
+  # Add labels for symbolHB points
+  geom_text_repel(data = symbolHB, aes(x = log2FoldChange, y = -log10(padj), label = symbol), color = "red", max.overlaps = 30) +
+  
+  # Optionally add labels for symbolU2OS points as well
+  # geom_text_repel(data = symbolU2OS, aes(x = log2FoldChange, y = -log10(padj), label = symbol), color = "blue") +
+
+  geom_vline(xintercept = c(-0.6, 0.6), col = "gray", linetype = 'dashed') +
+  geom_hline(yintercept = -log10(0.05), col = "gray", linetype = 'dashed')
+```
+
+## Filter for transcripts that are similiarly transcribed in both data sets, and generate a correlation plot
+
+```{r}
+similiarTranscripts <- filter(allsigtranscripts, diffexpressedHEK == diffexpressedU2OS & diffexpressedHEK != "NO")
+```
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+
+# Sample data frame (replace this with your actual data)
+data <- similiarTranscripts
+
+# Calculate correlation coefficient
+correlation <- cor(data$log2FoldChangeHEK, data$log2FoldChangeU2OS, use = "complete.obs")
+r_squared <- correlation^2
+
+# Create a correlation plot
+ggplot(data, aes(x = log2FoldChangeHEK, y = log2FoldChangeU2OS, label = symbolHEK)) +
+  geom_point(aes(color = diffexpressedHEK), size = 3) +
+  #geom_text(vjust = -1, size = 3) + # Optionally label points with gene symbols
+  geom_smooth(method = "lm", color = "blue", se = FALSE) + # Add a linear fit line
+  labs(title = "Correlation Plot: HEK vs U2OS",
+       x = "log2FoldChange (HEK)",
+       y = "log2FoldChange (U2OS)",
+       color = "Differential Expression") +
+  theme_minimal() +
+  # Add the R-squared value to the plot
+  annotate("text", x = min(data$log2FoldChangeHEK, na.rm = TRUE), 
+           y = max(data$log2FoldChangeU2OS, na.rm = TRUE), 
+           label = paste("R² =", round(r_squared, 2)), 
+           hjust = 0, vjust = 1, size = 5, color = "black")
+
+# Note: Make sure 'log2FoldChangeU2OS' is included in your actual data frame.
+
+```
+
+## Heatmap output. 
+
+```{r}
+# Load necessary libraries
+library(dplyr)
+library(ggplot2)
+library(reshape2)  # For melting the correlation matrix
+
+# Assuming similiarTranscripts is your data frame
+# Select relevant columns and calculate correlation
+cor_data <- similiarTranscripts %>%
+    select(log2FoldChangeHEK, log2FoldChangeU2OS)
+
+# Calculate the correlation matrix
+cor_matrix <- cor(cor_data, use = "complete.obs")
+
+# Melt the correlation matrix for ggplot
+cor_melted <- melt(cor_matrix)
+
+# Plotting the correlation matrix
+ggplot(cor_melted, aes(Var1, Var2, fill = value)) +
+    geom_tile() +
+    scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                         limit = c(-1, 1), midpoint = 0, 
+                         name = "Correlation") +
+    theme_minimal() +
+    labs(title = "Correlation Matrix between HEK and U2OS Log2 Fold Changes",
+         x = "", y = "") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+```
+
+## Generate individual gene correlations (Still Buggy)
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+
+# Select relevant columns
+cor_data <- similiarTranscripts %>%
+    select(gene_id, log2FoldChangeHEK, log2FoldChangeU2OS)
+
+# Calculate the correlation for each gene
+cor_value <- cor(cor_data$log2FoldChangeHEK, cor_data$log2FoldChangeU2OS)
+
+# Print the overall correlation value
+print(paste("Overall correlation:", cor_value))
+
+# If you want to analyze correlations for all gene pairs:
+# Create a wider format data frame for correlation
+wide_data <- cor_data %>%
+    select(gene_id, log2FoldChangeHEK, log2FoldChangeU2OS) %>%
+    pivot_wider(names_from = gene_id, values_from = c(log2FoldChangeHEK, log2FoldChangeU2OS))
+
+# Calculate pairwise correlations for all gene pairs
+pairwise_cor <- cor(wide_data, use = "complete.obs")
+
+# Melt the matrix for visualization
+pairwise_cor_melted <- melt(pairwise_cor)
+
+# Plotting the pairwise correlation matrix
+ggplot(pairwise_cor_melted, aes(Var1, Var2, fill = value)) +
+    geom_tile() +
+    scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                         limit = c(-1, 1), midpoint = 0, 
+                         name = "Correlation") +
+    theme_minimal() +
+    labs(title = "Pairwise Correlation Matrix",
+         x = "", y = "") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+## Delta L2FC Values in new column
+
+```{r}
+
+deltaChangeinSigSamples <- mutate(similiarTranscripts, abs(log2FoldChangeHEK) - abs(log2FoldChangeU2OS))
+
+colnames(deltaChangeinSigSamples)[16] = "Delta Log2FC"
+
+
+```
+
